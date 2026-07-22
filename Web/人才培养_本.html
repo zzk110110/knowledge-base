@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>人才培养 · 氢能科学与工程</title>
+    <style>
+        /* ===== 全局重置 & 基础（与论证报告一致） ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f9fc;
+            font-family: 'Times New Roman', '宋体', 'SimSun', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1e2a3a;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 60px 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+
+        /* ===== 标题区 ===== */
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px solid #1a3a5c;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .doc-header .school {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #1a3a5c;
+        }
+
+        .doc-header .title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #0a2a4a;
+            margin: 12px 0 8px 0;
+        }
+
+        .doc-header .meta {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .doc-header .meta span {
+            display: inline-block;
+            margin: 0 16px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin: 36px 0 18px 0;
+            border-left: 4px solid #1a5a8c;
+            padding-left: 14px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a3a5c;
+            margin: 28px 0 14px 0;
+            padding-left: 10px;
+            border-left: 3px solid #3a7aac;
+        }
+
+        p {
+            margin-bottom: 14px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* 无缩进段落 */
+        p.no-indent {
+            text-indent: 0;
+        }
+
+        /* ===== 列表 ===== */
+        ul,
+        ol {
+            margin: 10px 0 16px 2.8em;
+            padding-left: 0.5em;
+        }
+
+        li {
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        /* ===== 卡片网格（用于数据统计） ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 20px 0 24px 0;
+        }
+
+        .stat-card {
+            background: #f5f9ff;
+            border: 1px solid #dce4ed;
+            border-radius: 6px;
+            padding: 18px 16px;
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            border-color: #1a5a8c;
+            box-shadow: 0 2px 8px rgba(26, 58, 92, 0.08);
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0a2a4a;
+            line-height: 1.2;
+        }
+
+        .stat-card .label {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-top: 4px;
+        }
+
+        .stat-card .sub {
+            font-size: 14px;
+            color: #5a6f84;
+            margin-top: 4px;
+        }
+
+        /* ===== 就业区块 ===== */
+        .employment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0 24px 0;
+        }
+
+        .employment-box {
+            background: #fafcff;
+            border: 1px solid #e2e9f2;
+            border-radius: 6px;
+            padding: 20px 24px;
+        }
+
+        .employment-box h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin-top: 0;
+            border-bottom: 1px dashed #d0dce8;
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+        }
+
+        .employment-box ul {
+            margin-left: 1.8em;
+        }
+
+        /* ===== 高亮区块 ===== */
+        .highlight-box {
+            background: #f5f9ff;
+            border-left: 4px solid #1a5a8c;
+            padding: 14px 20px;
+            margin: 20px 0 24px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlight-box p {
+            text-indent: 0;
+            margin-bottom: 6px;
+        }
+
+        /* ===== 底部 ===== */
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d0dce8;
+            color: #5a6f84;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 28px 20px;
+            }
+
+            .doc-header .title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .doc-header .meta span {
+                display: block;
+                margin: 4px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .employment-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            ul,
+            ol {
+                margin-left: 1.6em;
+            }
+
+            h1 {
+                font-size: 19px;
+            }
+            h2 {
+                font-size: 17px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 40px 50px;
+            }
+            .stat-card:hover {
+                border-color: #dce4ed;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== 头部 ===== -->
+        <div class="doc-header">
+            <div class="school">华北电力大学 · 能源动力与机械工程学院</div>
+            <div class="title">氢能科学与工程 · 人才培养</div>
+            <div class="meta">
+                <span>招生规模</span>
+                <span>就业去向</span>
+                <span>人才成长</span>
+            </div>
+        </div>
+
+        <!-- ===== 一、本科招生 ===== -->
+        <h1>一、本科招生情况</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">90</div>
+                <div class="label">2022‑2023 年</div>
+                <div class="sub">北京+保定 / 年</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">120</div>
+                <div class="label">2024‑2025 年</div>
+                <div class="sub">北京+保定 / 年</div>
+            </div>
+            <!-- <div class="stat-card">
+                <div class="number">60</div>
+                <div class="label">2024‑2025 北京校部</div>
+                <div class="sub">较往年翻倍</div>
+            </div> -->
+        </div>
+
+        <ul>
+            <li><strong>2022、2023年</strong>：北京、保定两地共 <strong>90人/年</strong> 培养规模，其中北京校部招收 <strong>30人</strong>。</li>
+            <li><strong>2024、2025年</strong>：北京校部增加至 <strong>60人/年</strong>，北京校部和保定校区合计 <strong>120人/年</strong> 培养规模。</li>
+        </ul>
+
+        <!-- ===== 二、研究生招生 =====
+        <h1>二、研究生招生情况</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">10</div>
+                <div class="label">2022 年（学术型硕士）</div>
+                <div class="sub">北京+保定 / 年</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">50</div>
+                <div class="label">2023‑2024 年（专业型硕士）</div>
+                <div class="sub">培养规模</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">17 + 70</div>
+                <div class="label">2025 年硕士</div>
+                <div class="sub">学术型17人 · 专业型70人（含卓越工程师20人）</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">5‑7 + 5‑10</div>
+                <div class="label">博士研究生</div>
+                <div class="sub">学术型5‑7人/年 · 专业型5‑10人/年</div>
+            </div>
+        </div>
+
+        <ul>
+            <li><strong>2022年</strong>：北京保定两地共 <strong>10人/年</strong> 培养规模，均为学术型硕士。</li>
+            <li><strong>2023、2024年</strong>：专业型硕士开始招生，培养规模 <strong>50人</strong>。</li>
+            <li><strong>2025年</strong>：学术型硕士增加至 <strong>17人</strong>，专业型硕士增加至 <strong>70人</strong>（含卓越工程师 <strong>20人</strong>）。</li>
+            <li><strong>博士研究生</strong>：学术型 <strong>5‑7人/年</strong>，专业型 <strong>5‑10人/年</strong>。</li>
+        </ul> -->
+
+        <!-- ===== 三、22级本科就业 ===== -->
+        <h1>二、2022级本科生就业情况</h1>
+
+        <p class="no-indent"><strong>2022级本科毕业生共 31 人，去向分布如下：</strong></p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">4+4</div>
+                <div class="label">学术保研 / 校企联培保研（直博）</div>
+                <div class="sub">学术保研4人 · 校企联培保研/直博4人</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">15</div>
+                <div class="label">考研上岸</div>
+                <div class="sub">本校为主</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">8</div>
+                <div class="label">拟就业</div>
+                <div class="sub">部分已签约氢能及电力企业</div>
+            </div>
+        </div>
+
+        <ul>
+            <li><strong>学术保研</strong>：4人；<strong>校企联培保研/直博</strong>：4人。</li>
+            <li><strong>考研上岸</strong>：15人（以本校为主）。</li>
+            <li><strong>拟就业</strong>：8人，部分已签约 <strong>华电科工氢能事业部</strong>、<strong>南瑞氢电公司</strong>，以及 <strong>中广核</strong> 等电力企业。</li>
+        </ul>
+
+        <!-- ===== 四、研究生就业 =====
+        <h1>三、研究生就业去向</h1>
+
+        <div class="employment-grid">
+            <div class="employment-box">
+                <h3>🔬 氢能技术研发 / 深造</h3>
+                <p style="text-indent:0; margin-bottom:8px;"><strong>约 50%</strong> 进入以下单位继续从事氢能技术研发或读博：</p>
+                <ul>
+                    <li>华电电科院</li>
+                    <li>南瑞氢电</li>
+                    <li>东方氢能</li>
+                    <li>无锡威孚</li>
+                    <li>亿华通</li>
+                </ul>
+            </div>
+            <div class="employment-box">
+                <h3>⚡ 传统电力企业</h3>
+                <p style="text-indent:0; margin-bottom:8px;"><strong>约 50%</strong> 进入以下传统电力企业：</p>
+                <ul>
+                    <li>南方电网广东能发</li>
+                    <li>中能建山西电勘院</li>
+                    <li>三峡湖北鄂州电厂</li>
+                    <li>中广核电厂</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>总结：</strong>研究生就业呈现“氢能技术研发”与“传统电力系统”双轨并行格局，既服务氢能新兴产业，也支撑电力行业绿色转型，体现了专业“电氢协同”的特色定位。</p>
+        </div> -->
+
+        <!-- ===== 底部 ===== -->
+        <div class="footer-note">
+            © 2026 华北电力大学 · 氢能科学与工程
+        </div>
+
+    </div>
+
+</body>
+</html>

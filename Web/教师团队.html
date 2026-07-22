@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>教师团队 · 氢能科学与工程</title>
+    <style>
+        /* ===== 全局重置 & 基础（与论证报告完全一致） ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f9fc;
+            font-family: 'Times New Roman', '宋体', 'SimSun', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1e2a3a;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 60px 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+
+        /* ===== 标题区 ===== */
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px solid #1a3a5c;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .doc-header .school {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #1a3a5c;
+        }
+
+        .doc-header .title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #0a2a4a;
+            margin: 12px 0 8px 0;
+        }
+
+        .doc-header .meta {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .doc-header .meta span {
+            display: inline-block;
+            margin: 0 16px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin: 36px 0 18px 0;
+            border-left: 4px solid #1a5a8c;
+            padding-left: 14px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a3a5c;
+            margin: 28px 0 14px 0;
+            padding-left: 10px;
+            border-left: 3px solid #3a7aac;
+        }
+
+        p {
+            margin-bottom: 14px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* ===== 统计卡片（师资数据） ===== */
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0 30px 0;
+        }
+
+        .stat-item {
+            flex: 1 1 150px;
+            min-width: 120px;
+            background: #f5f9ff;
+            border: 1px solid #dce4ed;
+            border-radius: 6px;
+            padding: 16px 12px;
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a2a4a;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-top: 4px;
+        }
+
+        .stat-item.highlight .number {
+            color: #b22222;
+        }
+
+        /* ===== 研究方向卡片 ===== */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 20px 0 30px 0;
+        }
+
+        .research-card {
+            background: #fafcff;
+            border: 1px solid #e2e9f2;
+            border-radius: 6px;
+            padding: 18px 22px 20px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .research-card:hover {
+            border-color: #1a5a8c;
+            box-shadow: 0 2px 8px rgba(26, 58, 92, 0.08);
+        }
+
+        .research-card .name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin-bottom: 6px;
+            border-bottom: 1px dashed #d0dce8;
+            padding-bottom: 6px;
+        }
+
+        .research-card .desc {
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.6;
+            text-indent: 2em;
+            margin-top: 8px;
+        }
+
+        /* ===== 外部链接按钮 ===== */
+        .external-link-wrap {
+            text-align: center;
+            margin: 30px 0 10px 0;
+        }
+
+        .btn-external {
+            display: inline-block;
+            padding: 12px 36px;
+            background: #1a3a5c;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            letter-spacing: 1px;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            box-shadow: 0 2px 6px rgba(26, 58, 92, 0.25);
+        }
+
+        .btn-external:hover {
+            background: #0a2a4a;
+            box-shadow: 0 4px 12px rgba(26, 58, 92, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-external:active {
+            transform: translateY(0);
+        }
+
+        /* ===== 底部 ===== */
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d0dce8;
+            color: #5a6f84;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 28px 20px;
+            }
+
+            .doc-header .title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .doc-header .meta span {
+                display: block;
+                margin: 4px 0;
+            }
+
+            .stats-grid {
+                gap: 12px;
+            }
+
+            .stat-item {
+                flex: 1 1 100px;
+                padding: 12px 8px;
+            }
+
+            .stat-item .number {
+                font-size: 24px;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-external {
+                padding: 10px 28px;
+                font-size: 16px;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 40px 50px;
+            }
+            .btn-external {
+                background: #333;
+                color: #fff;
+            }
+            .research-card:hover {
+                border-color: #e2e9f2;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== 头部 ===== -->
+        <div class="doc-header">
+            <div class="school">华北电力大学 · 能源动力与机械工程学院</div>
+            <div class="title">氢能科学与工程 · 教师团队</div>
+            <div class="meta">
+                <span>师资力量</span>
+                <span>研究方向</span>
+                <span>创新引领</span>
+            </div>
+        </div>
+
+        <!-- ===== 师资数据统计 ===== -->
+        <h1>师资概况</h1>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="number">10</div>
+                <div class="label">教授</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">11</div>
+                <div class="label">副教授</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">11</div>
+                <div class="label">讲师</div>
+            </div>
+            <div class="stat-item highlight">
+                <div class="number">4</div>
+                <div class="label">国家级人才</div>
+            </div>
+        </div>
+
+        <!-- ===== 研究方向 ===== -->
+        <h1>研究方向</h1>
+        <p style="text-indent:0; margin-bottom:10px;">本专业教师研究方向覆盖氢能全产业链，以下为七大核心方向及其简要介绍：</p>
+
+        <div class="research-grid">
+            <!-- 1. 电解制氢 -->
+            <div class="research-card">
+                <div class="name">⚡ 电解制氢</div>
+                <div class="desc">利用电能将水分子分解为氢气和氧气，是实现“绿氢”的主要技术路径。研究涵盖碱性电解、PEM电解、固体氧化物电解等前沿方向，致力于提升效率、降低成本并适配可再生能源波动性。</div>
+            </div>
+            <!-- 2. 热化学制氢 -->
+            <div class="research-card">
+                <div class="name">🔥 热化学制氢</div>
+                <div class="desc">利用高温热源（如核能、太阳能、工业余热）驱动热化学循环分解水或含氢化合物制氢。研究聚焦于高效循环体系、反应器设计及热集成，为大规模零碳制氢提供新方案。</div>
+            </div>
+            <!-- 3. 固态储氢 -->
+            <div class="research-card">
+                <div class="name">🧊 固态储氢</div>
+                <div class="desc">利用金属氢化物、配位氢化物等多孔材料，以固态形式安全、高密度储存氢气。研究包括储氢材料设计、吸放氢动力学调控、热管理及系统集成，旨在解决氢气储运难题。</div>
+            </div>
+            <!-- 4. 燃料电池 -->
+            <div class="research-card">
+                <div class="name">🔋 燃料电池</div>
+                <div class="desc">将氢能通过电化学反应直接转化为电能，具有高效、清洁、安静等优点。研究涵盖质子交换膜燃料电池、固体氧化物燃料电池等，重点突破耐久性、成本及低温启动等关键技术。</div>
+            </div>
+            <!-- 5. 氢燃烧及氢内燃机 -->
+            <div class="research-card">
+                <div class="name">🔥 氢燃烧及氢内燃机</div>
+                <div class="desc">研究氢气在动力装置中的燃烧特性，开发高效、低排放的氢内燃机及燃气轮机。涉及燃烧稳定性、NOx控制、燃料喷射策略等，推动氢能在交通和发电领域的直接应用。</div>
+            </div>
+            <!-- 6. 仿真模拟 -->
+            <div class="research-card">
+                <div class="name">💻 仿真模拟</div>
+                <div class="desc">运用计算流体力学、分子动力学、系统仿真等工具，对氢能系统进行多尺度模拟与优化。涵盖制氢反应器、储氢容器、燃料电池堆、氢安全扩散等场景，加速研发并降低实验成本。</div>
+            </div>
+            <!-- 7. 氢安全 -->
+            <div class="research-card">
+                <div class="name">🛡️ 氢安全</div>
+                <div class="desc">专注于氢气泄漏、扩散、爆炸及材料氢脆等风险防控。研究氢能全链条的安全监测技术、风险评估模型、应急处理策略，为氢能产业规模化应用提供安全保障体系。</div>
+            </div>
+        </div>
+
+        <!-- ===== 外部链接 ===== -->
+        <div class="external-link-wrap">
+            <a href="https://iepi.ncepu.edu.cn/szdw/index.htm" target="_blank" class="btn-external">
+                查看完整教师团队 →
+            </a>
+            <p style="text-indent:0; font-size:14px; color:#5a6f84; margin-top:10px;">
+                访问学院官方网站，获取更多教师详情及科研成果
+            </p>
+        </div>
+
+        <!-- ===== 底部信息 ===== -->
+        <div class="footer-note">
+            © 2026 华北电力大学 · 氢能科学与工程
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>专业课程 · 氢能科学与工程</title>
+    <style>
+        /* ===== 全局重置 & 基础（与论证报告一致） ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f9fc;
+            font-family: 'Times New Roman', '宋体', 'SimSun', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1e2a3a;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 60px 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+
+        /* ===== 标题区 ===== */
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px solid #1a3a5c;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .doc-header .school {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #1a3a5c;
+        }
+
+        .doc-header .title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #0a2a4a;
+            margin: 12px 0 8px 0;
+        }
+
+        .doc-header .meta {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .doc-header .meta span {
+            display: inline-block;
+            margin: 0 16px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin: 36px 0 18px 0;
+            border-left: 4px solid #1a5a8c;
+            padding-left: 14px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a3a5c;
+            margin: 28px 0 14px 0;
+            padding-left: 10px;
+            border-left: 3px solid #3a7aac;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1e3a5a;
+            margin: 22px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 14px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* 段落无缩进（用于特定场景） */
+        p.no-indent {
+            text-indent: 0;
+        }
+
+        /* ===== 表格 ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            background: #ffffff;
+        }
+
+        table th {
+            background: #eaf0f8;
+            font-weight: 700;
+            color: #0a2a4a;
+            border: 1px solid #bccbd9;
+            padding: 10px 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        table td {
+            border: 1px solid #bccbd9;
+            padding: 9px 12px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        /* 类别列特殊样式 */
+        table .cat-label {
+            font-weight: 600;
+            background: #f5f8fc;
+            text-align: center;
+        }
+
+        .table-caption {
+            font-size: 14px;
+            color: #2c3e50;
+            margin-top: 6px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ===== 知识链卡片（可选） ===== */
+        .knowledge-chain {
+            background: #f5f9ff;
+            border-left: 4px solid #1a5a8c;
+            padding: 14px 20px;
+            margin: 20px 0 24px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .knowledge-chain p {
+            text-indent: 0;
+            margin-bottom: 6px;
+        }
+
+        .knowledge-chain strong {
+            color: #0a2a4a;
+        }
+
+        /* ===== 底部 ===== */
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d0dce8;
+            color: #5a6f84;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 28px 20px;
+            }
+
+            .doc-header .title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .doc-header .meta span {
+                display: block;
+                margin: 4px 0;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            table th,
+            table td {
+                padding: 6px 8px;
+            }
+
+            h1 {
+                font-size: 19px;
+            }
+            h2 {
+                font-size: 17px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 40px 50px;
+            }
+            .table-wrap {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== 头部 ===== -->
+        <div class="doc-header">
+            <div class="school">华北电力大学 · 能源动力与机械工程学院</div>
+            <div class="title">氢能科学与工程 · 专业课程体系</div>
+            <div class="meta">
+                <span>“宽口径·多层级”</span>
+                <span>学科交叉融合</span>
+                <span>全产业链覆盖</span>
+            </div>
+        </div>
+
+        <!-- ===== 1. 课程体系概述 ===== -->
+        <h1>一、理论课程体系设置</h1>
+
+        <p>氢能科学与工程专业是新工科教育理念下典型的学科交叉融合专业。目前，氢能学科体系尚处于探索阶段，缺乏成熟的课程体系和教材可供参考。华北电力大学氢能科学与工程教研室的相关老师梳理氢能学科知识点的基础上，结合学校学科融合优势，经过多轮校内外专家论证，最终形成了“宽口径、多层级”的课程体系培养方案。课程体系主要包括以下四个方面的内容：</p>
+
+        <ul>
+            <li><strong>工科公共基础课程</strong>：依托大电力学科体系，开设数学、物理、计算机、思想政治、体育和英语等课程，为学生打下扎实的理论基础。</li>
+            <li><strong>多学科交叉的专业基础课程</strong>：涵盖化学、材料、工程热物理、电气、机械和控制等关键学科内容，体现氢能学科的交叉融合特性，为学生提供多领域知识储备。</li>
+            <li><strong>专业核心课程</strong>：课程设置聚焦氢能产业链的关键环节，围绕制氢、储氢、用氢及氢安全等内容，开设针对性强、实践导向明确的课程，帮助学生全面掌握氢能全产业链的核心技术。</li>
+            <li><strong>专业选修课程</strong>：为学生提供进阶知识的学习机会，涵盖科研进展、热点应用及关键工具技能的教学内容，旨在拓展学生的知识深度与研究能力。</li>
+        </ul>
+
+        <p>氢能科学与工程本科专业的学生在入学第一年按照工科类专业要求进行大类培养，重点夯实公共基础课程。同时，“氢能概论”作为第一学期的入门课程，为刚入学的学生展示氢能技术的全貌和专业发展方向，让学生对未来的学习路径有清晰认识，这一课程虽然学分较少，但为后续所有专业课程提供了宏观指导框架。第二学年开始进入多学科交叉的专业基础课程学习，专业核心课程主要安排在第五和第六学期，专业选修课程则贯穿第三至第六学期。</p>
+
+        <p>氢能科学与工程专业设置了六门专业核心课程，构成了氢能全产业链的理论与技术基础。“氢燃烧与动力”重点讲授氢气燃烧机理、燃烧特性及氢动力系统原理；“制氢原理”系统介绍各种制氢技术的基本原理和工艺流程；“燃料电池”深入阐述燃料电池的工作机理、关键技术和系统集成；“氢储存与输运”涵盖氢气储存材料、储存方式和输运技术；“氢能系统及应用”整合氢能全产业链技术，培养系统集成能力；“氢安全”贯穿氢能生产、储运、应用全过程的安全技术。这六门核心课程覆盖了氢能“制-储-运-用”全产业链的关键技术环节，形成了完整的专业知识体系。</p>
+
+        <p>通过这一科学合理的课程体系设置，学生能够逐步掌握氢能领域的基础理论、核心技术和创新方法。氢能科学与工程的理论课程群已经初步形成，具体名称、学分和学期设置如表1所列。</p>
+
+        <!-- ===== 2. 课程表格 ===== -->
+        <h1>二、核心课程列表</h1>
+
+        <div class="table-wrap">
+            <table>
+                <caption style="caption-side:bottom; margin-top:8px; font-size:14px; color:#2c3e50; font-style:italic;">表1 氢能科学与工程本科专业课程体系核心内容</caption>
+                <thead>
+                    <tr>
+                        <th style="width:8%;">序号</th>
+                        <th style="width:32%;">课程名称</th>
+                        <th style="width:12%;">学分</th>
+                        <th style="width:12%;">学期</th>
+                        <th style="width:36%;">类别</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 专业基础课程 1-14 -->
+                    <tr><td>1</td><td>氢能概论</td><td>1</td><td>1</td><td class="cat-label" rowspan="14">专业基础课程</td></tr>
+                    <tr><td>2</td><td>材料科学与工程技术</td><td>2</td><td>3</td></tr>
+                    <tr><td>3</td><td>材料固体理论基础</td><td>4</td><td>5</td></tr>
+                    <tr><td>4</td><td>化学基本原理</td><td>4</td><td>3</td></tr>
+                    <tr><td>5</td><td>电化学工程</td><td>3</td><td>4</td></tr>
+                    <tr><td>6</td><td>工程流体力学</td><td>2</td><td>4</td></tr>
+                    <tr><td>7</td><td>工程热力学</td><td>2</td><td>3</td></tr>
+                    <tr><td>8</td><td>传热与传质</td><td>2</td><td>4</td></tr>
+                    <tr><td>9</td><td>工程制图基础</td><td>2</td><td>1</td></tr>
+                    <tr><td>10</td><td>机械设计基础</td><td>2</td><td>3</td></tr>
+                    <tr><td>11</td><td>电工技术基础</td><td>3</td><td>3</td></tr>
+                    <tr><td>12</td><td>电子技术基础</td><td>3</td><td>4</td></tr>
+                    <tr><td>13</td><td>自动控制原理</td><td>2.5</td><td>5</td></tr>
+                    <tr><td>14</td><td>过程参数检测及仪表</td><td>2</td><td>7</td></tr>
+                    <!-- 专业核心课程 15-20 -->
+                    <tr><td>15</td><td>氢燃烧与动力</td><td>3</td><td>4</td><td class="cat-label" rowspan="6">专业核心课程</td></tr>
+                    <tr><td>16</td><td>制氢原理</td><td>3</td><td>5</td></tr>
+                    <tr><td>17</td><td>燃料电池</td><td>3</td><td>5</td></tr>
+                    <tr><td>18</td><td>氢储存与输运</td><td>3</td><td>6</td></tr>
+                    <tr><td>19</td><td>氢能系统及应用</td><td>2</td><td>6</td></tr>
+                    <tr><td>20</td><td>氢安全</td><td>2</td><td>6</td></tr>
+                    <!-- 专业选修课程 21-27 -->
+                    <tr><td>21</td><td>计算机辅助设计(CAD)</td><td>2</td><td>3</td><td class="cat-label" rowspan="7">专业选修课程</td></tr>
+                    <tr><td>22</td><td>本科生科研入门</td><td>2</td><td>3</td></tr>
+                    <tr><td>23</td><td>新能源发电</td><td>2</td><td>4</td></tr>
+                    <tr><td>24</td><td>电力系统与储能</td><td>2</td><td>5</td></tr>
+                    <tr><td>25</td><td>Matlab语言</td><td>2</td><td>6</td></tr>
+                    <tr><td>26</td><td>多物理场仿真</td><td>2</td><td>5</td></tr>
+                    <tr><td>27</td><td>加氢站</td><td>2</td><td>6</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== 3. 课程知识链分析 ===== -->
+        <h1>三、多学科知识链交叉融合</h1>
+
+        <h2>3.1 化学类课程知识链</h2>
+        <p>化学类课程构成了氢能专业的核心理论基础，形成了从基础化学到应用化学的完整知识体系。“化学基本原理”在第三学期开设，该课程融合了大学化学和物理化学课程的核心内容，系统讲授物质结构基础、化学热力学、化学动力学等内容，使学生掌握化学的基本概念和基础理论，为理解氢能转换过程中的化学本质奠定坚实基础。该课程直接支撑了第四学期的“电化学工程”，深入阐述电化学反应原理、电极过程动力学、电解质溶液理论等内容，为燃料电池和电解制氢技术提供理论支撑。第五学期的专业核心课程“制氢原理”与“燃料电池”进一步深化化学知识的应用。“制氢原理”重点讲授电解制氢、热化学制氢等各种制氢技术的电化学反应机理和催化反应原理，涉及氧化还原反应、电化学过程和热力学分析，以及制氢器件的结构与设计等内容，使学生牢固掌握制氢的基础理论知识。“燃料电池”课程则系统介绍燃料电池的工作原理、分类及各类燃料电池的电化学反应过程、离子传导机制和催化剂作用机理，电堆关键部件及设计等内容。这些课程围绕氢气的生产、转化和利用展开，构成了氢能关键技术的化学理论核心，实现了基础化学理论与工程应用的有机结合，体现了化学学科在氢能领域的基础性和关键性作用。</p>
+
+        <h2>3.2 工程热物理知识链</h2>
+        <p>第三学期的“工程热力学”和第四学期的“工程流体力学”与“传热与传质”形成了完整的“两传一力”工程热物理知识链。这一知识链为第四学期的“氢燃烧与动力”提供了能量转换和传递的理论支持，同时也为“制氢原理”和“燃料电池”中的热质传递过程提供了理论基础。此外，“工程流体力学”还特别支撑了第六学期的“氢储存与输运”和“加氢站”课程中关于氢气流动与输运的专业内容。</p>
+
+        <h2>3.3 材料科学知识链</h2>
+        <p>材料科学类课程形成了另一条重要的知识链。第三学期的“材料科学与工程技术”介绍了基本材料结构与性能，为第五学期更深入的“材料固体理论基础”课程打下基础。这两门课程共同支撑了“氢储存与输运”中储/运氢材料的选择与设计，以及“制氢原理”和“燃料电池”中电极材料、催化剂和质子交换膜等关键材料的理解与应用。</p>
+
+        <h2>3.4 电气与控制知识链</h2>
+        <p>电气与控制类课程构成了系统集成的关键支撑。第三学期的“电工技术基础”为第四学期的“电子技术基础”提供了电气基础知识，这两门课程又共同支撑了第五学期的“自动控制原理”和“过程参数检测及仪表”，形成了从基础电路到复杂控制系统的知识链。这一系列课程为“氢能系统及应用”和“氢安全”提供了电气控制和安全监测的技术基础。第六学期的“氢能系统及应用”则作为综合性课程，整合了制氢、储氢、输氢和用氢等系统技术，形成了从基础理论到工程应用的完整知识体系。</p>
+
+        <h2>3.5 工程设计与计算能力支撑</h2>
+        <p>工程设计与计算能力贯穿整个课程体系。第一学期的“工程制图基础”为第三学期的“机械设计基础”和“计算机辅助设计(CAD)”提供了工程表达基础，这些课程共同支撑了后续各专业课程中的设备设计与系统集成。第四学期的“新能源发电”和第五学期的“电力系统与储能”将氢能技术放在更广阔的能源系统背景下，为第六学期的“氢能系统及应用”提供了系统集成的大背景。“氢安全”课程贯穿了从制氢到用氢的全过程安全考量，与所有核心专业课程形成了交叉支撑关系。第六学期的“加氢站”课程则作为氢能基础设施的典型代表，整合了流体、控制、安全等多方面知识。此外，第三学期开设的“本科生科研入门”培养了学生的科研思维和创新能力，为后续各专业课程中的探究性学习和毕业设计奠定了方法论基础。同时，第五学期的“多物理场仿真”与第六学期的“Matlab语言”相互配合，为学生提供了数值计算和模拟仿真的工具，支持了“氢能系统及应用”中的系统设计与优化，也为学生掌握未来科研和工程实践所需的分析工具打下基础。</p>
+
+        <div class="knowledge-chain">
+            <p><strong>课程体系整体评价：</strong>通过这样一个有机衔接、相互支撑的课程体系，学生能够在四年的学习过程中逐步构建起完整的氢能科学与工程知识体系，培养解决复杂工程问题的能力。整个课程体系形成了多条知识链相互交织的网络结构，既有纵向的知识递进，也有横向的学科融合，确保了学生在毕业时具备系统化的专业知识和综合工程能力。</p>
+        </div>
+
+        <!-- ===== 底部 ===== -->
+        <div class="footer-note">
+            © 2026 华北电力大学 · 氢能科学与工程
+        </div>
+
+    </div>
+
+</body>
+</html>
