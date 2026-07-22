@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>本科教育 · 氢能科学与工程</title>
+    <style>
+        /* ===== 全局重置 & 基础（与系列页面完全一致） ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f9fc;
+            font-family: 'Times New Roman', '宋体', 'SimSun', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1e2a3a;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 60px 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+
+        /* ===== 标题区 ===== */
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px solid #1a3a5c;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .doc-header .school {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #1a3a5c;
+        }
+
+        .doc-header .title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #0a2a4a;
+            margin: 12px 0 8px 0;
+        }
+
+        .doc-header .meta {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .doc-header .meta span {
+            display: inline-block;
+            margin: 0 16px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin: 36px 0 18px 0;
+            border-left: 4px solid #1a5a8c;
+            padding-left: 14px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        /* ===== 导航卡片网格 ===== */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 30px 0 20px 0;
+        }
+
+        .nav-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            background: #f5f9ff;
+            border: 1px solid #dce4ed;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            min-height: 140px;
+        }
+
+        .nav-card:hover {
+            background: #eaf0f8;
+            box-shadow: 0 6px 16px rgba(26, 58, 92, 0.12);
+            transform: translateY(-4px);
+            border-color: #1a5a8c;
+        }
+
+        .nav-card:active {
+            transform: translateY(0);
+        }
+
+        .nav-card .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0a2a4a;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .nav-card .card-desc {
+            font-size: 15px;
+            color: #3a5a7a;
+            line-height: 1.5;
+            text-indent: 0;
+        }
+
+        /* ===== 底部 ===== */
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d0dce8;
+            color: #5a6f84;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 28px 20px;
+            }
+
+            .doc-header .title {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .doc-header .meta span {
+                display: block;
+                margin: 4px 0;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .nav-card {
+                min-height: 100px;
+                padding: 20px 16px;
+            }
+
+            .nav-card .card-title {
+                font-size: 19px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 40px 50px;
+            }
+            .nav-card {
+                border: 1px solid #888;
+                background: #f3f3f3;
+            }
+            .nav-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== 头部 ===== -->
+        <div class="doc-header">
+            <div class="school">华北电力大学 · 能源动力与机械工程学院</div>
+            <div class="title">本科教育</div>
+            <div class="meta">
+                <span>培养方案</span>
+                <span>课程体系</span>
+                <span>师资力量</span>
+                <span>人才发展</span>
+            </div>
+        </div>
+
+        <!-- ===== 导航卡片 ===== -->
+        <div class="nav-grid">
+            <a href="./专业介绍.html" class="nav-card" target="_blank">
+                <div class="card-title">📖 专业介绍</div>
+                <div class="card-desc">培养目标 · 专业特色 · 发展前景</div>
+            </a>
+            <a href="./专业课程.html" class="nav-card" target="_blank">
+                <div class="card-title">📚 专业课程</div>
+                <div class="card-desc">课程体系 · 核心设置 · 知识链融合</div>
+            </a>
+            <a href="./教师团队.html" class="nav-card" target="_blank">
+                <div class="card-title">👨‍🏫 教师团队</div>
+                <div class="card-desc">师资概况 · 研究方向 · 科研实力</div>
+            </a>
+            <a href="./人才培养_本.html" class="nav-card" target="_blank">
+                <div class="card-title">🎯 人才培养</div>
+                <div class="card-desc">招生规模 · 就业去向 · 成长路径</div>
+            </a>
+        </div>
+
+        <!-- ===== 底部信息 ===== -->
+        <div class="footer-note">
+            © 2026 华北电力大学 · 氢能科学与工程
+        </div>
+
+    </div>
+
+</body>
+</html>
