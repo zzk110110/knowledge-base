@@ -1,0 +1,48 @@
+﻿{
+  "envId": "hydrogen-web-d4gbhq49p6879f58e",
+  "version": "2.0",
+  "framework": {
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "entry": ".",
+          "output": {
+            "path": "."
+          },
+          "deploy": {
+            "cloudPath": "/hydrogen-web"
+          }
+        }
+      },
+      "server": {
+        "use": "@cloudbase/framework-plugin-function",
+        "inputs": {
+          "functions": [
+            {
+              "name": "chat",
+              "handler": "index.main",
+              "params": {},
+              "triggers": [
+                {
+                  "name": "http",
+                  "type": "http",
+                  "config": {
+                    "path": "/api/chat",
+                    "method": "POST,OPTIONS"
+                  }
+                }
+              ],
+              "entries": [
+                {
+                  "src": "./cloud-function",
+                  "handler": "index.main"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
