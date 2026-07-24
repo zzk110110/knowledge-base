@@ -1,16 +1,10 @@
-﻿// ============================================================
-// ai-qa-new.js — AI 智能问答（通过后端代理调用阿里云百炼）
+// ============================================================
+// ai-qa-new.js — AI 智能问答（通过 CloudBase SDK 调用云函数）
 // ============================================================
 
 // ===== 配置区 =====
 var CONFIG = {
-  // API Key 已移至后端 server/.env，本地无需配置
-    // ===== 部署到公网时修改下面这行 =====
-  // Cloudflare Workers 示例: 'https://my-worker.xxx.workers.dev/api/chat'
-  // 本地开发: '/api/chat'（前后端同域）
-  backendUrl: '/api/chat',
-  // 如果后端部署在不同地址，修改上面这行，例如：
-  // backendUrl: 'https://your-backend.com/api/chat',
+  // API Key 已移至云函数环境变量
   systemPrompt: '你是华北电力大学氢能科学与工程专业的智能助手。请基于已有知识回答用户问题，回答要简洁准确。如果不知道就说不知道，不要编造。'
 };
 
@@ -75,14 +69,21 @@ var CONFIG = {
     return h + '</div></div>';
   }
 
-  // ===== 通过后端代理调用 AI =====
+  // ===== 通过 CloudBase SDK 调用云函数 =====
   async function callAPI(question) {
-    var r = await fetch(CONFIG.backendUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: question })
+    var app = cloudbase.init({
+      env: 'hydrogen-web-d4gbhq49p6879f58e'
     });
-    return r;
+    var res = await app.callFunction({
+      name: 'chat',
+      data: { message: question }
+    });
+    return {
+      ok: true,
+      json: async function() {
+        return typeof res.result === 'string' ? JSON.parse(res.result) : res.result;
+      }
+    };
   }
 
   async function handleQ(question) {
@@ -93,12 +94,11 @@ var CONFIG = {
     try {
       var resp = await callAPI(question);
       hideTyping();
-      if (!resp.ok) {
-        var errData = null;
-        try { errData = await resp.json(); } catch(e) {}
-        throw new Error(errData && errData.error ? errData.error : (resp.status + ' ' + resp.statusText));
-      }
       var data = await resp.json();
+      // 检查云函数是否返回了错误
+      if (data.error) {
+        throw new Error(data.error);
+      }
       var ans = null;
       try { ans = data.choices[0].message.content; } catch(e) {}
       if (ans && ans.trim()) {
@@ -129,6 +129,5 @@ var CONFIG = {
     var t = e.target.closest('.qa-suggest-btn');
     if (t) handleQ(t.textContent);
   };
-  console.log('[AI Q&A] \u5DF2\u52A0\u8F7D\uFF08\u540E\u7AEF\u4EE3\u7406\u6A21\u5F0F\uFF09');
+  console.log('[AI Q&A] \u5DF2\u52A0\u8F7D\uFF08CloudBase SDK \u6A21\u5F0F\uFF09');
 })();
-
